@@ -10,4 +10,5 @@ This project is Front end UI for chainlink22 hackathon Repostiory "BondBank-Back
    ### FrontEnd Developers:
    
     [James](https://github.com/KodeSage)
+    [Goran](https://github.com/gogsii)
     [Nick](https://github.com/techbronick)
