@@ -25,6 +25,25 @@ const Home: NextPage = () => {
       Connect to Wallet
     </button>
   );
+  
+  const registerAsAdmin = () => (
+    <button
+      className="cta-button connect-wallet-button"
+      onClick={connectWallet}
+    >
+      RegisterAsAdmin
+    </button>
+  );
+
+  const registerAsBondBuyer = () => (
+    <button
+      className="cta-button connect-wallet-button"
+      onClick={connectWallet}
+    >
+      RegisterAsAdmin
+    </button>
+  );
+
   const connectWallet = async () => {};
     /*
    * Let's define this method so our code doesn't break.
@@ -48,11 +67,7 @@ const Home: NextPage = () => {
         setIsConnected(false);
       }
       
-        // if (metamask.) {
-        //   const response = await metamask.connect();
-        //   console.log('Connected with Public Key:', response.publicKey.toString());
-        //   setWalletAddress(response.publicKey.toString());
-        // }
+      
     }
     async function getAllBonds() {
       
@@ -75,15 +90,11 @@ const Home: NextPage = () => {
                 this beta app is created for Chainlink hackathon 2022
               </div>
               {renderNotConnectedContainer()}
+              <div></div>
+              <div></div>
+              <div></div>
             </div>
-            {isConnected ? (
-              <>
-                "Connected!"
-                <button className="cta-button connect-wallet-button" onClick={()=> getAllBonds()}>List available bonds</button>
-              </>
-            ) : (
-              <button className="cta-button connect-wallet-button" onClick={()=> connect()}>Connect with Patrick!</button>
-            )}
+         
             
             <div>
               $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
@@ -103,7 +114,7 @@ const Home: NextPage = () => {
           </div>
 
           <footer className={styles.footer}>Made with &#10084; by BondBank team</footer>
-        </div>
+     </div>
 
   )
 }
