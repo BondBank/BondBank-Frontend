@@ -8,9 +8,9 @@ fs.createReadStream(fNamewithPath)
   .on("data", function (row) {
     console.log(row);
   })
-//   .on("end", function () {
-//     console.log("finished");
-//   })
-//   .on("error", function (error) {
-//     console.log(error.message);
-//   });
+  .on("end", function () {
+    console.log("finished");
+  })
+  .on("error", function (error) {
+    console.log(error.message);
+  });

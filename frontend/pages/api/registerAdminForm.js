@@ -6,11 +6,11 @@ export default function handler(req, res) {
     if (!body.name) {
       return res.status(500).json({ msg: 'Name was not found' });
     }
-     const localmigrationFile = "./data/contact.csv/contact_data.csv"
+     const localmigrationFile = "./data/bondData/Admin_Users.csv"
      const fNamewithPath = localmigrationFile
-     const dummy = body.name
+     const dummy = body.fname
      
-     writeCsv(fNamewithPath,[{str:"1",name: dummy}]);
+     writeCsv(fNamewithPath,[{str:"1",fname:  dummy, lname: body.lname, ssn: body.ssn}]);
     res.status(200).json({ name: `${body.fname} Lastname` });
   }
 

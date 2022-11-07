@@ -1,4 +1,11 @@
-const contact = () => {
+//import {csvHelperJs} from '../scripts/csvHelperJs'
+ 
+// import {fs} from "fs"
+//import {writeCsv}  from './util.js'
+const { parse } = require("csv-parse");
+const { stringify } = require("csv-stringify");
+const fNamewithPath = 'test.csv'
+const contact = (writeCsv) => {
 
   return (
     <div className="max-w-xs my-2 overflow-hidden rounded shadow-lg">
@@ -21,6 +28,7 @@ const contact = () => {
             Submit
           </button>
         </form>
+    
         </div>
   </div>
   )
@@ -28,6 +36,7 @@ const contact = () => {
 }
 
 export default contact;
+
 
 
 const submitContact = async (event) => {
@@ -42,6 +51,9 @@ const submitContact = async (event) => {
     },
     method: 'POST',
   });
+ // writeCsv(fNamewithPath,[name]);
   const result = await res.json();
+
   alert(`Is this your full name: ${result.name}`);
 };
+

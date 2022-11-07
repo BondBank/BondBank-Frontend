@@ -15,7 +15,7 @@ export default function PageWithJSbasedForm(){// Handles the submit event on for
       const JSONdata = JSON.stringify(data)
   
       // API endpoint where we send form data.
-      const endpoint = '/api/form'
+      const endpoint = '/api/registerAdminForm'
   
       // Form the request for sending data to the server.
       const options = {
@@ -39,11 +39,11 @@ export default function PageWithJSbasedForm(){// Handles the submit event on for
     }
     return (
         <form className="flex flex-col" onSubmit={handleSubmit}>
-            <label htmlFor="first">First name</label>
-            <input type="text" id="first" name="first" required />
+            <label htmlFor="fname">First name</label>
+            <input type="text" id="fname" name="fname" required />
 
-            <label htmlFor="last">Last name</label>
-            <input type="text" id="last" name="last" required />
+            <label htmlFor="lname">Last name</label>
+            <input type="text" id="lname" name="lname" required />
 
             <label htmlFor="ssn">Social Security</label>
             <input type="text" id="ssn" name="ssn" required />

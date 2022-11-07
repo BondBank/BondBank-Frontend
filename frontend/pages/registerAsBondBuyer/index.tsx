@@ -7,7 +7,7 @@
 const { parse } = require("csv-parse");
 const { stringify } = require("csv-stringify");
 const fNamewithPath = 'test.csv'
-const registerAsAdmin = () => {
+const registerAsBondBuyer = () => {
 
   return (
     <div className="max-w-xs my-2 overflow-hidden rounded shadow-lg">
@@ -61,7 +61,7 @@ const registerAsAdmin = () => {
 
 }
 
-export default registerAsAdmin;
+export default registerAsBondBuyer;
 
 
 
@@ -70,7 +70,7 @@ const submitContact = async (event) => {
   const fname = event.target.fname.value;
   const lname = event.target.lname.value;
   const ssn = event.target.ssn.value;
-  const res = await fetch('/api/registerAsAdmin', {
+  const res = await fetch('/api/registerAsBondBuyer', {
     body: JSON.stringify({
       name: fname,
       lname: lname,

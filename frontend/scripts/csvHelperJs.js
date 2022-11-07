@@ -28,7 +28,7 @@ export function readCsv(fNamewithPath)
             console.log(error.message);
         });
     }
-export function writeCsv(fNamewithPath,stringDataArr)
+const writeCsv = (fNamewithPath,stringDataArr) =>
     {
         const writableStream = fs.createWriteStream(fNamewithPath,{flags: 'a'});
     const stringifier = stringify(); //stringify({ header: true, columns: columns });
@@ -37,3 +37,4 @@ export function writeCsv(fNamewithPath,stringDataArr)
     console.log("Finished writing data");
     }
     
+    export default writeCsv;

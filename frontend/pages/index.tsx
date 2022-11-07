@@ -4,6 +4,8 @@ import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import {useState} from "react";
 import {ethers} from "ethers";
+import { Router } from 'next/router';
+import Link from 'next/link'
 //import { connect } from 'http2';
 const tokenIdsMinted =1;
 function renderButton(){
@@ -27,22 +29,27 @@ const Home: NextPage = () => {
   );
   
   const registerAsAdmin = () => (
-    <button
-      className="cta-button connect-wallet-button"
-      onClick={connectWallet}
-    >
-      RegisterAsAdmin
-    </button>
+ 
+    <Link href='/registerAsAdmin' className="link-nav">Register as BondCreator / Admin (click here)</Link>
   );
 
   const registerAsBondBuyer = () => (
-    <button
-      className="cta-button connect-wallet-button"
-      onClick={connectWallet}
-    >
-      RegisterAsAdmin
-    </button>
+   
+      <Link href='/registerAsBondBuyer' className="link-nav"> Register as BondBuyer (click here)
+      </Link>
   );
+  
+  const bondBuyerUI = () => (
+   
+      <Link href='/bondBuyerUI' className="link-nav"> BondBuyer Screen (click here)
+      </Link>
+  );
+   const bondCreatorUI = () => (
+   
+      <Link href='/bondCreatorUI' className="link-nav"> Bond Creator Screen (click here)
+      </Link>
+  );
+
 
   const connectWallet = async () => {};
     /*
@@ -90,26 +97,28 @@ const Home: NextPage = () => {
                 this beta app is created for Chainlink hackathon 2022
               </div>
               {renderNotConnectedContainer()}
-              <div></div>
-              <div></div>
-              <div></div>
+              <h2>Registration Section</h2>
+              <div>{registerAsAdmin()}</div>
+              <div>{registerAsBondBuyer()}</div>
+              <br></br>
+              <h2>Login Section</h2>
+              <div>
+              <div>{bondCreatorUI()}</div>
+              <div>{bondBuyerUI()}</div>
+              </div>
             </div>
          
             
-            <div>
-              $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
-            </div>
+            <div>if time permits we will implement below functionalities </div>
             <div className="dashboard-card">
             <div className="dashboard-card"><p className="card-title">Backing per $bondToken</p><p className="card-value">$34,964</p></div>
             <div className="dashboard-card"><p className="card-title">Burned $bondToken</p><p className="card-value">$34,964</p></div>
             </div>
             
 
-          <div>
-            -------------------------------------------------
-          </div>
+       
             <div>
-              <img className={styles.image} src="./LW3punks/1.png" />
+              <img className={styles.image} src="1.png" />
             </div>
           </div>
 
