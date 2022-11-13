@@ -6,7 +6,7 @@ const Header = () => {
     <nav className="header">
       {/* Maybe we don't need the logo to be clickable since we have Home Nav already? */}
       {/* <Link href="/" className="logo"> */}
-      <Typography variant="h5">BondBank Dapp - dev version</Typography>
+      <h1 className="logo">BondBank Dapp - dev version</h1>
       {/* </Link> */}
       <div className="navigation">
         <Link href="/">

@@ -2,8 +2,8 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
 
 a {
@@ -13,6 +13,32 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+:root {
+  /* linear gradient for background */
+  --linear-gradient-low-transparency: linear-gradient(
+    45deg,
+    rgba(25, 118, 210, 0.7) 0%,
+    rgba(94, 76, 192, 0.7) 50%,
+    rgba(156, 39, 176, 0.7) 100%
+  );
+
+  /* linear gradient for background */
+  --linear-gradient-high-transparency: linear-gradient(
+    45deg,
+    rgba(25, 118, 210, 0.3) 0%,
+    rgba(94, 76, 192, 0.3) 50%,
+    rgba(156, 39, 176, 0.3) 100%
+  );
+
+  /* linear gradient for text */
+  --text-linear-gradient: linear-gradient(
+    45deg,
+    rgba(66, 165, 245, 1) 0%,
+    rgba(133, 131, 220, 1) 50%,
+    rgba(228, 69, 255, 1) 100%
+  );
 }
 
 .container {
@@ -25,7 +51,7 @@ a {
   display: flex;
   padding: 0 2rem;
   align-items: center;
-  border-bottom: 1px solid #eaeaea;
+  background: var(--linear-gradient-low-transparency);
 }
 
 .navigation {
@@ -36,8 +62,6 @@ a {
 }
 
 .link-nav {
-  font-size: 16px;
-  color: #1976d2;
   padding: 1.5rem 2rem;
   margin-right: 1rem;
   font-weight: bold;
@@ -45,19 +69,25 @@ a {
 }
 
 .link-nav:hover {
-  background: #1976d2;
-  color: white;
+  font-size: 18px;
+  background: var(--linear-gradient-low-transparency);
 }
 
 .footer {
   display: flex;
+  font-weight: bold;
   padding: 2rem 0;
-  border-top: 1px solid #eaeaea;
+  /* border-top: 1px solid #eaeaea; */
   justify-content: center;
   align-items: center;
+  background: var(--text-linear-gradient);
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
-@media (prefers-color-scheme: dark) {
+/* control with Material UI configs? */
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -65,4 +95,4 @@ a {
     color: white;
     background: black;
   }
-}
+} */
