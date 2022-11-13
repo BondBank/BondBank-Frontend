@@ -5,6 +5,11 @@ import { useState } from 'react';
 import { ethers } from 'ethers';
 import { Router } from 'next/router';
 import Link from 'next/link';
+import { Button } from '@mui/material';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 //import { connect } from 'http2';
 const tokenIdsMinted = 1;
@@ -16,38 +21,33 @@ const Home: NextPage = () => {
   const [provider, setProvider] = useState();
 
   const renderNotConnectedContainer = () => (
-    <button
-      className="cta-button connect-wallet-button"
-      onClick={connectWallet}
-    >
+    <Button variant="contained" className="button" onClick={connectWallet}>
       Connect to Wallet
-    </button>
+    </Button>
   );
 
   const registerAsAdmin = () => (
-    <Link href="/registerAsAdmin" className="link-nav">
+    <Button href="/registerAsAdmin" className="button">
       Register as BondCreator / Admin (click here)
-    </Link>
+    </Button>
   );
 
   const registerAsBondBuyer = () => (
-    <Link href="/registerAsBondBuyer" className="link-nav">
+    <Button href="/registerAsBondBuyer" className="button">
       {' '}
       Register as BondBuyer (click here)
-    </Link>
+    </Button>
   );
 
   const bondBuyerUI = () => (
-    <Link href="/manageBondsUI" className="link-nav">
-      {/* {' '} */}
-      BondBuyer Screen (click here)
-    </Link>
+    <Button href="/manageBondsUI" className="button">
+      Buy Bond
+    </Button>
   );
   const bondCreatorUI = () => (
-    <Link href="/bondCreatorUI" className="link-nav">
-      {/* {' '} */}
-      Bond Creator Screen (click here)
-    </Link>
+    <Button href="/bondCreatorUI" className="button">
+      Create Bond
+    </Button>
   );
 
   const connectWallet = async () => {};
@@ -76,28 +76,36 @@ const Home: NextPage = () => {
   return (
     <div>
       <div className={styles.main}>
-        <div>
+        <div className={styles.welcomeSection}>
           <h1 className={styles.title}>Welcome to BondBank App</h1>
           <div className={styles.description}>
             Its enables asset managers to create different bonds using token
-            DAI, ETH, BTC, AVAX for now!.
+            DAI, ETH, BTC, AVAX for now!
           </div>
           <div className={styles.description}>
-            this beta app is created for Chainlink hackathon 2022
+            This beta app is created for Chainlink hackathon 2022.
           </div>
           {renderNotConnectedContainer()}
-          {/* <h2>Registration Section</h2>
+        </div>
+
+        {/* <h2>Registration Section</h2>
           <div>{registerAsAdmin()}</div>
           <div>{registerAsBondBuyer()}</div> */}
-          <br></br>
-          <h2>Login Section</h2>
-          <div>
+
+        <Card sx={{ minWidth: 450 }}>
+          <CardContent>
+            <Typography variant="h5" component="div">
+              Login Section
+            </Typography>
+            <Typography variant="body2" sx={{ mt: 1.5 }}>
+              Some description of the login section
+            </Typography>
+          </CardContent>
+          <CardActions>
             <div>{bondCreatorUI()}</div>
-            <br></br>
             <div>{bondBuyerUI()}</div>
-          </div>
-          <br></br>
-        </div>
+          </CardActions>
+        </Card>
 
         {/* <div className={styles.grid}>
           <div>
@@ -109,14 +117,20 @@ const Home: NextPage = () => {
         </div> */}
       </div>
 
-      {/*<div>
-              <img className={styles.image} src="1.png" />
-            </div>
-                        <div>if time permits we will implement below functionalities </div>
-            <div className="dashboard-card">
-            <div className="dashboard-card"><p className="card-title">Backing per $bondToken</p><p className="card-value">$34,964</p></div>
-            <div className="dashboard-card"><p className="card-title">Burned $bondToken</p><p className="card-value">$34,964</p></div>
-            </div>*/}
+      {/* <div>
+        <img className={styles.image} src="1.png" />
+      </div>
+      <div>if time permits we will implement below functionalities </div>
+      <div className="dashboard-card">
+        <div className="dashboard-card">
+          <p className="card-title">Backing per $bondToken</p>
+          <p className="card-value">$34,964</p>
+        </div>
+        <div className="dashboard-card">
+          <p className="card-title">Burned $bondToken</p>
+          <p className="card-value">$34,964</p>
+        </div>
+      </div> */}
     </div>
   );
 };

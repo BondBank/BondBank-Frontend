@@ -41,12 +41,23 @@ a {
   );
 }
 
+/* Global Styles */
 .container {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
 }
 
+.button {
+  transition: all 0.2s linear;
+}
+
+.button:hover {
+  color: white;
+  background: var(--linear-gradient-low-transparency);
+}
+
+/* Header Styles */
 .header {
   display: flex;
   padding: 0 2rem;
@@ -73,6 +84,7 @@ a {
   background: var(--linear-gradient-low-transparency);
 }
 
+/* Footer Styles */
 .footer {
   display: flex;
   font-weight: bold;
