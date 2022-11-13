@@ -7,6 +7,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 import type { AppProps } from 'next/app';
+import Head from 'next/head';
 //import {Web3ReactProvider} from ''
 
 import Header from '../components/Header';
@@ -22,6 +23,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
+      <Head>
+        <title>BondBank</title>
+        <meta name="description" content="BondBank-Dapp" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className="App">
         <div className="container">
           <Header />
