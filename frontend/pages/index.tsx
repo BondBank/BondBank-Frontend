@@ -6,6 +6,9 @@ import {useState} from "react";
 import {ethers} from "ethers";
 import { Router } from 'next/router';
 import Link from 'next/link'
+
+
+
 //import { connect } from 'http2';
 const tokenIdsMinted =1;
 function renderButton(){
@@ -18,6 +21,7 @@ const Home: NextPage = () => {
   //const [walletAddress, setWalletAddress]; //= useState(null);
   const [isConnected, setIsConnected] = useState(false);
   const [provider, setProvider] = useState();
+  
   
   const renderNotConnectedContainer = () => (
     <button
@@ -41,7 +45,7 @@ const Home: NextPage = () => {
   
   const bondBuyerUI = () => (
    
-      <Link href='/bondBuyerUI' className="link-nav"> BondBuyer Screen (click here)
+      <Link href='/manageBondsUI' className="link-nav"> BondBuyer Screen (click here)
       </Link>
   );
    const bondCreatorUI = () => (
@@ -98,29 +102,40 @@ const Home: NextPage = () => {
               </div>
               {renderNotConnectedContainer()}
               <h2>Registration Section</h2>
-              <div>{registerAsAdmin()}</div>
-              <div>{registerAsBondBuyer()}</div>
+              {/* <div>{registerAsAdmin()}</div>
+              <div>{registerAsBondBuyer()}</div> */}
               <br></br>
               <h2>Login Section</h2>
               <div>
               <div>{bondCreatorUI()}</div>
+              <br></br>
               <div>{bondBuyerUI()}</div>
               </div>
+              <br></br>
             </div>
          
             
-            <div>if time permits we will implement below functionalities </div>
+
+            <div className={styles.grid}>
+
+                <div>
+                   <a href="/bondCreatorUI" className={styles.card}>
+                    <h2>Bond Creator UI &rarr;</h2>
+                    <p>Create new Bonds.</p>
+                    </a>
+                </div>
+            </div>
+
+          </div>
+
+          {/*<div>
+              <img className={styles.image} src="1.png" />
+            </div>
+                        <div>if time permits we will implement below functionalities </div>
             <div className="dashboard-card">
             <div className="dashboard-card"><p className="card-title">Backing per $bondToken</p><p className="card-value">$34,964</p></div>
             <div className="dashboard-card"><p className="card-title">Burned $bondToken</p><p className="card-value">$34,964</p></div>
-            </div>
-            
-
-       
-            <div>
-              <img className={styles.image} src="1.png" />
-            </div>
-          </div>
+            </div>*/}
 
           <footer className={styles.footer}>Made with &#10084; by BondBank team</footer>
      </div>

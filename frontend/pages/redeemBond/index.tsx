@@ -7,11 +7,12 @@ import {
 
 import Link from 'next/link'
 import {useEffect, useState} from 'react'  
+import Router from 'next/router'
 
-function buyBond(){
-    
-    const [bondId, setbondId] = useState()
-    const [Bondunits, setBondunits] = useState()
+const redeemBond = () =>{
+    const BacktoBondBuyer = () => {
+        Router.push('/bondBuyerUI');
+    }
     async function erc(){
         try{
             const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -24,7 +25,7 @@ function buyBond(){
             = new ethers.Contract(CreateBondandAdminRole_CONTRACT_ADDRESS,
                 CreateBondandAdminRole_CONTRACT_ABI,signer12);
             
-             erc20.BuyBond(5);
+             erc20.redeemBond(5);
             } catch (err) {
                 console.error(err);
                 
@@ -33,28 +34,20 @@ function buyBond(){
 
     return (
         <div>
-            <h1><a className="footer-text">Buy Bond</a></h1>
+            <h1><a className="footer-text">Redeem Bond</a></h1>
             <div>
                 <label>Bond Id :</label>
-                
-                <input id="bondId" name="bondId" type="text" onChange={(e) => setbondId(e.target.value)}></input>
+                <input id="bondId" type="text"></input>
                 <br/>
             </div>
-            <br/>
+            <br/>   
+            <button className="cta-button connect-wallet-button" onClick={() => redeemBond()}>Redeem</button>
             <div>
-                <label>Units :</label>
-                
-                <input id="Bondunits" name="Bondunits" type="text" onChange={(e) => setBondunits(e.target.value)}></input>
-                <br/>
-            </div>
-            <br/>
+            <button className="cta-button connect-wallet-button" onClick={() => BacktoBondBuyer()}>Back</button>
             
-            <button className="cta-button connect-wallet-button" onClick={() => callMintFunction()}>Buy</button>
+            </div>
         </div>
     );
 }
-export default buyBond;
+export default redeemBond;
 
-function callMintFunction(): void {
-    throw new Error("Function not implemented.");
-}

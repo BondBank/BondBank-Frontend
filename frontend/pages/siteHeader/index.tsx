@@ -10,10 +10,10 @@ export default function SiteHeader() {
         <>  
             <div className={styles.container}>
                 <div className={styles.left}>
-                    <div className={styles.logo}><Image src={logo} alt=""/></div>
+                <div className={styles.logo}><Image src={logo} alt=""/></div>
                     <Link href='/'>Home</Link>
                     <Link href='/about'>About</Link>
-                    {//<Link href={`/catalog?foo=${fooValue}`}>Catalog</Link>}
+                    {/*<Link href={`/catalog?foo=${fooValue}`}>Catalog</Link>*/}
                 </div>
                 <div className={styles.right}>{<a href="" className="cta">Sign In</a>}</div>
             </div>
