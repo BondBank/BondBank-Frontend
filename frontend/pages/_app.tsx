@@ -3,26 +3,34 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import '../styles/globals.css';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import type { AppProps } from 'next/app';
-import Link from 'next/link';
 //import {Web3ReactProvider} from ''
+
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-  <div className="App">
-    <div className="container">
-      <Link href='/' className="link-nav"><h1>BondBank Dapp - dev version</h1></Link>
-      <div>
-      <Link href='/' className="link-nav"><h2>Home</h2></Link>
-      
-      <Link href='/About' className="link-nav"><h2>About</h2></Link>
+    <ThemeProvider theme={darkTheme}>
+      <CssBaseline />
+      <div className="App">
+        <div className="container">
+          <Header />
+          <Component {...pageProps} />
+          <Footer />
+        </div>
       </div>
-      
-      <Component {...pageProps} />
-    </div>
-  </div>
-  )
+    </ThemeProvider>
+  );
 }
 
-export default MyApp
+export default MyApp;
