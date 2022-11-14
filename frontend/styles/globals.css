@@ -65,6 +65,10 @@ a {
   background: var(--linear-gradient-low-transparency);
 }
 
+.logo {
+  margin: 0;
+}
+
 .navigation {
   display: flex;
   flex-direction: row;
@@ -72,15 +76,13 @@ a {
   margin-left: 3rem;
 }
 
-.link-nav {
+.navLink {
   padding: 1.5rem 2rem;
-  margin-right: 1rem;
   font-weight: bold;
   transition: all 0.2s linear;
 }
 
-.link-nav:hover {
-  font-size: 18px;
+.navLink:hover, .navLinkSelected {
   background: var(--linear-gradient-low-transparency);
 }
 
@@ -89,7 +91,6 @@ a {
   display: flex;
   font-weight: bold;
   padding: 2rem 0;
-  /* border-top: 1px solid #eaeaea; */
   justify-content: center;
   align-items: center;
   background: var(--text-linear-gradient);

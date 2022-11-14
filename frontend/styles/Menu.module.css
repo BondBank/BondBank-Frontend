@@ -1,0 +1,124 @@
+.container {
+  position: relative;
+}
+
+.button {
+  font-weight: bold;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1.5rem 2rem;
+}
+
+.button:hover {
+  cursor: pointer;
+  background: var(--linear-gradient-low-transparency);
+}
+
+.buttonName {
+  margin-right: 0.5rem;
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 0.15rem 0.15rem 0;
+  padding: 0.15rem;
+  transition: all 0.2s linear;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+.right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+.dropdownBg {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 72px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(0.1rem);
+  z-index: 999;
+}
+
+.dropdownMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-items: space-between;
+  min-width: 20rem;
+  max-width: 85vw;
+  padding: 1.5rem 2rem 1.2rem;
+  margin: 0 auto;
+  color: #1a2027;
+  background-color: #fff;
+  position: absolute;
+  top: 72px;
+  z-index: 10000;
+  border-bottom-left-radius: 0.8rem;
+  border-bottom-right-radius: 0.8rem;
+}
+
+.dropwdownSection {
+  min-width: 15rem;
+  margin-right: 2rem;
+}
+
+.dropwdownSection:nth-last-child(1) {
+  margin-right: 0;
+}
+
+.itemTitle {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #cfcfcf;
+  margin-bottom: 0.5rem;
+}
+
+.itemOption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.8rem 0.5rem;
+  position: relative;
+}
+
+.itemOption:hover {
+  cursor: pointer;
+  color: #c70076;
+  background: linear-gradient(
+    to left,
+    transparent,
+    transparent 50.03%,
+    #f6f6f6 50%,
+    #f6f6f6
+  );
+  background-size: 200% 100%;
+}
+
+.optionArrow {
+  display: inline-block;
+  border: solid #c70076;
+  border-width: 0 0.15rem 0.15rem 0;
+  padding: 0.15rem;
+  opacity: 0;
+  transition: 0.2s all;
+}
+
+.itemOption:hover .optionArrow {
+  opacity: 1;
+}
