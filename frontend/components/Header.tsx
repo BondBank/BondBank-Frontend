@@ -27,14 +27,12 @@ const menuItem: MenuItem = {
 const menuItems: MenuItemList = [menuItem, menuItem, menuItem];
 
 const Header = () => {
-  // const [navLinkSelected, setNavLinkSelected] = useState(true)
-
   return (
     <nav className="header">
       <h1 className="logo">BondBank Dapp - dev version</h1>
       <div className="navigation">
         <Link href="/">
-          <a className="navLink navLinkSelected">Home</a>
+          <a className="navLink">Home</a>
         </Link>
 
         <Menu menuName="Test Menu" menuItems={menuItems} />
