@@ -1,15 +1,16 @@
 import type { NextPage } from 'next';
-import Image from 'next/image';
+// import Image from 'next/image';
 import styles from '../styles/Home.module.css';
 import { useState } from 'react';
 import { ethers } from 'ethers';
-import { Router } from 'next/router';
-import Link from 'next/link';
+// import { Router } from 'next/router';
+// import Link from 'next/link';
 import { Button } from '@mui/material';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import ListItem from '../components/ListItem';
+// import Card from '@mui/material/Card';
+// import CardActions from '@mui/material/CardActions';
+// import CardContent from '@mui/material/CardContent';
+// import Typography from '@mui/material/Typography';
 
 //import { connect } from 'http2';
 const tokenIdsMinted = 1;
@@ -73,9 +74,36 @@ const Home: NextPage = () => {
   }
   async function getAllBonds() {}
 
+  type BondItem = {
+    name: string;
+    details: string;
+    matureDate: string;
+    seller: string;
+    buyers: string[];
+  };
+
+  type BondList = Array<BondItem>;
+
+  const bondItem: BondItem = {
+    name: 'Bond 1',
+    details:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
+    matureDate: '2023.02.16',
+    seller: '0x123123123123123123123123',
+    buyers: [
+      '0x456456456456456456456456456456',
+      '0x789789789789789789789789789789',
+    ],
+  };
+
+  const bondList: BondList = [bondItem, bondItem, bondItem];
+
   return (
     <div>
       <div className={styles.main}>
+        {/* Show / hide welcome section v.s. bond list view based on wallet connection state */}
+
+        {/* Welcome Section */}
         <div className={styles.welcomeSection}>
           <h1 className={styles.title}>Welcome to BondBank App</h1>
           <div className={styles.description}>
@@ -88,11 +116,29 @@ const Home: NextPage = () => {
           {renderNotConnectedContainer()}
         </div>
 
+        {/* Bond List View */}
+        {bondList.map(({ name, details, matureDate, buyers }, index) => {
+          // Get user address from Metamask or RainbowKit ConnectButton
+          const userAddress = '0x234234234234234234234234234234';
+          // If user address not in buyers list, show Buy button
+          const showBuyButton = !buyers.includes(userAddress);
+
+          return (
+            <ListItem
+              key={index}
+              name={name}
+              details={details}
+              matureDate={matureDate}
+              showBuyButton={showBuyButton}
+            />
+          );
+        })}
+
         {/* <h2>Registration Section</h2>
           <div>{registerAsAdmin()}</div>
           <div>{registerAsBondBuyer()}</div> */}
 
-        <Card sx={{ minWidth: 450 }}>
+        {/* <Card sx={{ minWidth: 450 }}>
           <CardContent>
             <Typography variant="h5" component="div">
               Login Section
@@ -105,7 +151,7 @@ const Home: NextPage = () => {
             <div>{bondCreatorUI()}</div>
             <div>{bondBuyerUI()}</div>
           </CardActions>
-        </Card>
+        </Card> */}
 
         {/* <div className={styles.grid}>
           <div>

@@ -1,0 +1,46 @@
+.item {
+  width: 50vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 auto 0.8rem;
+  background-color: #262626;
+  border-radius: 0.4rem;
+}
+
+.itemInfo, .matureDate {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.name, .details, .matureDate {
+  margin-right: 2rem;
+}
+
+.name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.details {
+  font-style: italic;
+  color: #a1a1aa;
+}
+
+.matureDateTxt {
+  margin-top: 0.1rem;
+  margin-left: 0.3rem;
+}
+
+.buyButton {
+  transition: all 0.2s linear;
+}
+
+.buyButton:hover {
+  color: white;
+  background: var(--linear-gradient-low-transparency);
+}
