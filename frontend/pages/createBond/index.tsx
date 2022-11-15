@@ -7,6 +7,7 @@ import {
 
 import Link from 'next/link'
 import {useEffect, useState} from 'react'  
+import Router from 'next/router'
 
 
 
@@ -116,7 +117,9 @@ const [BondMaximumAmount, setMaximumAmount] =  useState("0");
     
 
   })
-
+  function goBackToManageBonds(){
+    Router.push('/bondCreatorUI');
+  }
     return (
         <div className="container">
             <h1><a className="footer-text">Create Bond</a></h1>
@@ -148,16 +151,21 @@ const [BondMaximumAmount, setMaximumAmount] =  useState("0");
             </div>
             <br/>
             <div>
-                <button className="cta-button connect-wallet-button" onClick={() => learWeb3callCreateBondFunction1()}>learnWeb3Create</button>
+                <button className="cta-button connect-wallet-button" onClick={() => learWeb3callCreateBondFunction1()}>Create</button>
                 
             </div>
+            <br></br>
+            <div>
+                <button className="cta-button connect-wallet-button" onClick={() => goBackToManageBonds()}>Cancel</button>
+                
+            </div>
+            <br></br>
+           
             <div>
             <h2>Bondid '{bondId}' is created</h2>
                 
             </div>
-            <div>
-            <Link href='/bondCreatorUI'>Back</Link>
-            </div>
+           
         </div>
     );
 }

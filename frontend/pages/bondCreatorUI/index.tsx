@@ -3,6 +3,7 @@
 import { ethers, Contract } from 'ethers';
 import {useState} from 'react'
 import Link from 'next/link'
+import Router from 'next/router'
 import {
  
     CreateBondandAdminRole_CONTRACT_ABI,
@@ -11,14 +12,23 @@ import {
   
 function bondCreatorUI(){
     const [adminFlag, setAdminFlag] = useState(false);
+    const createNewBondPage=()=> {
+      Router.push('/createBond');
+    }
+    const gotoHome=()=> {
+      Router.push('/');
+    }
     
     const handleNav = () =>{
         
         if(adminFlag)
         {
-            return (<div> 
+            return (
+            <div>
+              <br></br>
               
-              <Link href='/createBond'>Create a New Bond</Link>
+                  <button className="cta-button connect-wallet-button" onClick={() => bondCreatorUI()}>Create New Bond</button>
+              
               <br></br>
             </div>)
         }else{
@@ -51,25 +61,21 @@ function bondCreatorUI(){
                     
                       console.log(`adminFlag-before=${adminFlag}`);
                      
-                       erc20.adminrole(own)
-                       .then((e1)=>{setAdminFlag(e1), console.log(`prom-${e1}`)});
-
+                       const valfromContract = await erc20.checkIfAddminRoleIsPresent();
                        
-                      //setAdminFlag(await erc20.adminrole(own));
-                      console.log(`adminFlag-after=${adminFlag}`);
-                      setAdminFlag(false);
-                      console.log(`after2222=${adminFlag}`);
-                    //   .then(console.log(own))
-                    //   .else(console.log('nothing'))
+                       setAdminFlag(valfromContract);
+                       console.log(`valfromContract-after=${valfromContract}`);
+                       console.log(`adminFlag-after=${adminFlag}`);
                       
                   } catch (e) {
-                      console.error('$$$$$$$$$$$$');
+                      console.error('check()--UnabletoConnectTowallet---');
                       console.error(e);
                       
                   }
           } catch (err) {
-              console.error('-------------------');
+              console.error('check_if_adminRole_isPresent():err----');
             console.error(err);
+         
             
           }
     }
@@ -113,22 +119,24 @@ function bondCreatorUI(){
                       console.log('----');
                       const t = await erc20.addADMINrole()
                       console.log(t);
-                    //   .then(console.log(own))
-                    //   .else(console.log('nothing'))
+                    
                       } else {
                       
                       }
                   } catch (e) {
-                      console.error('$$$$$$$$$$$$');
+                      
+                      console.error('assign_AdminRole()--UnabletoConnectTowallet---');
                       console.error(e);
                       
                   }
           } catch (err) {
-              console.error('-------------------');
+            console.error('assign_AdminRole():err----');
             console.error(err);
             
           }
-       
+         
+          
+          
     }
 
     
@@ -137,15 +145,16 @@ function bondCreatorUI(){
             <h1><a className="footer-text">Buy Bond</a></h1>
             <div>
             <button className="cta-button connect-wallet-button" onClick={() => assign_AdminRole()}>Assign Admin Role</button>                
+            </div>
+            <div>
             <button className="cta-button connect-wallet-button" onClick={() => check_if_adminRole_isPresent()}>Check</button>
             </div>
             <div>
                     
                   <div>{handleNav()}</div>
-                    <div>
-                    
-                    <Link href='/'>Back</Link>
-                    </div>
+                  <div>
+            <button className="cta-button connect-wallet-button" onClick={() => gotoHome()}>Back</button>
+            </div>
              </div>
             <br/>
             
@@ -157,3 +166,10 @@ export default bondCreatorUI;
 
 
 
+/*
+ <br></br>
+ <div>
+    <button className="cta-button connect-wallet-button" onClick={() => goBackToManageBonds()}>Cancel</button
+ </div>
+ <br></br>
+*/

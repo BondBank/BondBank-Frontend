@@ -10,6 +10,7 @@ import {useEffect, useState} from 'react'
 import Router from 'next/router'
 
 const redeemBond = () =>{
+    const [bondId, setBondId] = useState('')
     const BacktoBondBuyer = () => {
         Router.push('/bondBuyerUI');
     }
@@ -24,8 +25,8 @@ const redeemBond = () =>{
             const erc20 
             = new ethers.Contract(CreateBondandAdminRole_CONTRACT_ADDRESS,
                 CreateBondandAdminRole_CONTRACT_ABI,signer12);
-            
-             erc20.redeemBond(5);
+            console.log('starting redeeming for "'+bondId+'"');
+             erc20.Bondredemption(bondId);
             } catch (err) {
                 console.error(err);
                 
@@ -37,11 +38,12 @@ const redeemBond = () =>{
             <h1><a className="footer-text">Redeem Bond</a></h1>
             <div>
                 <label>Bond Id :</label>
-                <input id="bondId" type="text"></input>
+                <input id="bondId" type="text" onChange={(e) => setBondId(e.target.value)}></input>                
                 <br/>
+
             </div>
             <br/>   
-            <button className="cta-button connect-wallet-button" onClick={() => redeemBond()}>Redeem</button>
+            <button className="cta-button connect-wallet-button" onClick={() => erc()}>Redeem</button>
             <div>
             <button className="cta-button connect-wallet-button" onClick={() => BacktoBondBuyer()}>Back</button>
             

@@ -9,10 +9,10 @@ This project is Front end UI for chainlink22 hackathon Repostiory "BondBank-Back
     [Harish](https://github.com/BlockchainDeveloper009)
     [Michael](https://github.com/AmadiMichael)
     [Joel](https://github.com/JJtheAndroid)
+    [levblanc](https://github.com/levblanc)
 
 
-### FrontEnd Developers:
 
-    [James](https://github.com/KodeSage)
-    [Goran](https://github.com/gogsii)
+    
+    
     
