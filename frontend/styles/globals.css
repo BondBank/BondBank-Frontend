@@ -82,8 +82,19 @@ a {
   transition: all 0.2s linear;
 }
 
-.navLink:hover, .navLinkSelected {
+.navLink:hover,
+.navLinkSelected {
   background: var(--linear-gradient-low-transparency);
+}
+
+.pageTitle {
+  font-size: 2rem;
+  margin: 2rem 0;
+  background: var(--text-linear-gradient);
+  text-align: center;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 /* Footer Styles */

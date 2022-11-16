@@ -105,10 +105,10 @@ const Home: NextPage = () => {
 
         {/* Welcome Section */}
         <div className={styles.welcomeSection}>
-          <h1 className={styles.title}>Welcome to BondBank App</h1>
+          <h1 className="pageTitle">Welcome to BondBank App</h1>
           <div className={styles.description}>
-            It enables asset managers to create different bonds using token
-            DAI, ETH, BTC, AVAX for now!
+            It enables asset managers to create different bonds using token DAI,
+            ETH, BTC, AVAX for now!
           </div>
           <div className={styles.description}>
             This beta app is created for Chainlink hackathon 2022.
