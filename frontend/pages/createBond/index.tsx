@@ -13,6 +13,8 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import { arrayBuffer } from 'node:stream/consumers';
+import { Button } from '@mui/material';
+import styles from '../../styles/CreateBond.module.css';
 
 interface InputState {
   bondName: string;
@@ -218,12 +220,10 @@ const CreateBond = () => {
   }
 
   return (
-    <div className="container">
-      <h1>
-        <a className="footer-text">Create Bond</a>
-      </h1>
-      <div>
-        <label>Bond Name:</label>
+    <div className={styles.formContainer}>
+      <h1 className={`pageTitle ${styles.title}`}>Create Bond</h1>
+      <div className={styles.formField}>
+        <label className={styles.label}>Bond Name</label>
         <TextField
           required
           size="small"
@@ -234,13 +234,9 @@ const CreateBond = () => {
           error={!!errors.bondName}
           helperText={errors.bondName}
         />
-        <br />
       </div>
-      <br />
-
-      <br />
-      <div>
-        <label>Maturity Date with only date: </label>
+      <div className={styles.formField}>
+        <label className={styles.label}>Maturity Date with only date</label>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DesktopDatePicker
             inputFormat="MM/DD/YYYY"
@@ -258,11 +254,9 @@ const CreateBond = () => {
             )}
           />
         </LocalizationProvider>
-        <br />
       </div>
-      <br />
-      <div>
-        <label>Maturity Date with Time:</label>
+      <div className={styles.formField}>
+        <label className={styles.label}>Maturity Date with Time</label>
         <LocalizationProvider dateAdapter={AdapterDayjs}>
           <DateTimePicker
             value={datePickerValues.maturityDateWithTime}
@@ -279,13 +273,10 @@ const CreateBond = () => {
             )}
           />
         </LocalizationProvider>
-        <br />
       </div>
-      <br />
-
-      <div>
+      <div className={styles.formField}>
         {/*add validation to make this field required and should be with in range of $1000 to $100k*/}
-        <label>Maximum Amount:</label>
+        <label className={styles.label}>Maximum Amount</label>
         <TextField
           required
           size="small"
@@ -296,31 +287,20 @@ const CreateBond = () => {
           error={!!errors.maxAmount}
           helperText={errors.maxAmount}
         />
-        <br />
       </div>
-      <br />
-      <div>
-        <button
-          className="cta-button connect-wallet-button"
+      <div className={styles.buttonSection}>
+        <Button onClick={() => goBackToManageBonds()}>Cancel</Button>
+        <Button
+          variant="contained"
+          className={styles.button}
           onClick={() => learWeb3callCreateBondFunction1()}
         >
           Create
-        </button>
+        </Button>
       </div>
-      <br></br>
-      <div>
-        <button
-          className="cta-button connect-wallet-button"
-          onClick={() => goBackToManageBonds()}
-        >
-          Cancel
-        </button>
-      </div>
-      <br></br>
-
-      <div>
+      {/* <div>
         <h2>{`Bondid '${bondId}' is created`}</h2>
-      </div>
+      </div> */}
     </div>
   );
 };
