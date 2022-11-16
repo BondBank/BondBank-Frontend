@@ -20,6 +20,7 @@ function createBond(){
     const [BondName, setBondName] = useState("test9");
 const [BondStartDate, setBondStartDate] =  useState("1");
 const [BondMaturityDate, setBondMaturityDate] =  useState("30");
+const [BondMaturityDateWithTime, setBondMaturityDateWithTime] =  useState("30");
 const [BondunitPrice, setBondunitPrice] =  useState("0");
 const [BondMaximumUnits, setBondMaximumUnits] =  useState("0");
 const [BondMaximumAmount, setMaximumAmount] =  useState("0");
@@ -132,19 +133,20 @@ const [BondMaximumAmount, setMaximumAmount] =  useState("0");
            
             <br/>
             <div>
-                <label>Maturity Date    :</label>
+                <label>Maturity Date with only date   :</label>
                 <input id="BondMaturityDate" type="text" onChange={(e) => setBondMaturityDate(e.target.value)}></input>
                 <br/>
             </div>
             <br/>
             <div>
-                <label>UnitPrice        :</label>
-                <input id="BondunitPrice" name="BondunitPrice" type="text" onChange={(e) => setBondunitPrice(e.target.value)}></input>
+            <label>Maturity Date with Time   :</label>
+                <input id="BondMaturityDateWithTime" type="text" onChange={(e) => setBondMaturityDateWithTime(e.target.value)}></input>
                 <br/>
             </div>
             <br/>
             
             <div>
+                {/*add validation to make this field required and should be with in range of $1000 to $100k*/}
                 <label>Maximum Amount   :</label>
                 <input id="BondMaximumAmount" type="text" onChange={(e) => setMaximumAmount(e.target.value)}></input>
                 <br/>

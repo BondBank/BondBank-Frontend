@@ -13,9 +13,18 @@ function About(){
                     <li><a href='https://github.com/JJtheAndroid'>Joel (Backend Developer)</a></li>
                     <li><a href='https://github.com/BlockchainDeveloper009'>Harish (FullStack)</a></li>
                     <li><a href='https://github.com/AmadiMichael'>Michaels (Backend Developer)</a></li>
-                    <li><a href='https://github.com/gogsii'>Goran (Frontend Developer)</a></li>
+                    <li><a href='https://github.com/levblanc'>Nikko Luo (FullStack Developer)</a></li>
                 </ul>
-                </div>
+            </div>
+
+            <h2>Tech stack</h2>
+            <ul>
+                    <li>Solidity</li>
+                    <li>Nextjs</li>
+                    <li>Js | Ts</li>
+                    <li>Web3modal</li>
+                    <li>Chainlink for Automation</li>
+            </ul>
         </div>
     );
 }
