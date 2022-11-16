@@ -3,7 +3,7 @@ import {
  
   CreateBondandAdminRole_CONTRACT_ABI,
   CreateBondandAdminRole_CONTRACT_ADDRESS,
-} from "../../constants";
+} from "../constants";
 
 
 async function fetchAllBonds() {
@@ -32,43 +32,43 @@ async function fetchAllBonds() {
 
                 //  console.log(t[0].toString())
                 //  console.log(t[1].toString())
-                setAllbondIds(t);
-                setbondObjs(t);
+                // setAllbondIds(t);
+                // setbondObjs(t);
                 
                 
                 
-                console.log('%%%%%%%%%%%%%%%%--')
+                // console.log('%%%%%%%%%%%%%%%%--')
 
-                console.log(bondObjs[0]) //{ar0: 't', ar1: 'e', ar2: 's', ar3: 't', ar4: 'y'}
-                console.log('%%%%%%%%%%%%%%%%--')
-                console.log(bondObjs[1])    //undefined
-                console.log('%%%%%%%%%%%%%%%%--')
-                console.log(bondObjs[2]) //undefined
+                // console.log(bondObjs[0]) //{ar0: 't', ar1: 'e', ar2: 's', ar3: 't', ar4: 'y'}
+                // console.log('%%%%%%%%%%%%%%%%--')
+                // console.log(bondObjs[1])    //undefined
+                // console.log('%%%%%%%%%%%%%%%%--')
+                // console.log(bondObjs[2]) //undefined
                 
-                //  bondObjs.push(
-                //   {t[0].bondName,
-                //    t[0].bondStartDate.toString(),
-                //   });
-                bondObjs.push(
-                t[0].bondName,
-                t[0].bondStartDate,
-                t[0].bondMaturityDate,
-                t[0].BondManager,
-                t[0].Altcoinswap
+                // //  bondObjs.push(
+                // //   {t[0].bondName,
+                // //    t[0].bondStartDate.toString(),
+                // //   });
+                // bondObjs.push(
+                // t[0].bondName,
+                // t[0].bondStartDate,
+                // t[0].bondMaturityDate,
+                // t[0].BondManager,
+                // t[0].Altcoinswap
                 
-                );
+                // );
             
-                console.log('%%%%%%%%%%%%%%%%--')
-                console.log(bondObjs[1]) 
+                // console.log('%%%%%%%%%%%%%%%%--')
+                // console.log(bondObjs[1]) 
 
-                console.log('%%%%%%%%%%%%%%%%--')
-                console.log(bondObjs[2]) 
+                // console.log('%%%%%%%%%%%%%%%%--')
+                // console.log(bondObjs[2]) 
 
-                console.log('%%%%%%%%%%%%%%%%--')
-                console.log(bondObjs[3]) 
+                // console.log('%%%%%%%%%%%%%%%%--')
+                // console.log(bondObjs[3]) 
                 
-                console.log('%%%%%%%%%%%%%%%%--')
-                console.log(bondObjs[4]) 
+                // console.log('%%%%%%%%%%%%%%%%--')
+                // console.log(bondObjs[4]) 
 
             } else{
                 console.log('No Bonds found')
@@ -84,4 +84,3 @@ async function fetchAllBonds() {
     }
 }
 
-await fetchAllBonds();
