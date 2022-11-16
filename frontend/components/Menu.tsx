@@ -15,7 +15,7 @@ const Menu = ({
   menuName: string;
   menuItems: MenuItemList;
 }) => {
-  const [isMenuOpen, setIsMenuOpen] = useState(true);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
