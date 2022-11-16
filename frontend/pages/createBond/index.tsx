@@ -4,7 +4,7 @@ import {
   CreateBondandAdminRole_CONTRACT_ADDRESS,
 } from '../../constants';
 // import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, ChangeEvent } from 'react';
 import Router from 'next/router';
 import dayjs, { Dayjs } from 'dayjs';
 import TextField from '@mui/material/TextField';
@@ -12,10 +12,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateTimePicker } from '@mui/x-date-pickers/DateTimePicker';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { arrayBuffer } from 'node:stream/consumers';
 
 interface InputState {
   bondName: string;
   maxAmount: string;
+}
+interface ErrorState {
+  [key: string]: string;
 }
 interface DatePickerState {
   maturityDate: Dayjs | null;
@@ -39,18 +43,73 @@ const CreateBond = () => {
     maturityDateWithTime: dayjs(),
   });
 
+  const [errors, setErrors] = useState<ErrorState>({
+    bondName: '',
+    maturityDate: '',
+    maturityDateWithTime: '',
+    maxAmount: '',
+  });
+
   const handleInputChange =
-    (prop: keyof InputState) =>
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      setInputValues({ ...inputValues, [prop]: event.target.value });
+    (attrName: keyof InputState) => (event: ChangeEvent<HTMLInputElement>) => {
+      setInputValues({ ...inputValues, [attrName]: event.target.value });
     };
 
   const handleDatePickerChange =
-    (prop: keyof DatePickerState) => (newValue: Dayjs | null) => {
-      setDatePickerValues({ ...datePickerValues, [prop]: newValue });
+    (attrName: keyof DatePickerState) => (newValue: Dayjs | null) => {
+      setDatePickerValues({ ...datePickerValues, [attrName]: newValue });
     };
 
+  const checkRequiredFields = () => {
+    let checkPass = true;
+    const { bondName, maxAmount } = inputValues;
+    const { maturityDate, maturityDateWithTime } = datePickerValues;
+
+    const requiredFields = [
+      {
+        attrName: 'bondName',
+        value: bondName,
+      },
+      {
+        attrName: 'maxAmount',
+        value: maxAmount,
+      },
+      {
+        attrName: 'maturityDate',
+        value: maturityDate,
+      },
+      {
+        attrName: 'maturityDateWithTime',
+        value: maturityDateWithTime,
+      },
+    ];
+
+    for (let index = 0; index < requiredFields.length; index++) {
+      const { value, attrName } = requiredFields[index];
+
+      if (!value) {
+        Object.assign(errors, {
+          [attrName]: 'This field is required',
+        });
+
+        checkPass = false;
+      } else if (errors[attrName]) {
+        Object.assign(errors, {
+          [attrName]: '',
+        });
+
+        checkPass = true;
+      }
+
+      setErrors({ ...errors });
+    }
+
+    return checkPass;
+  };
+
   async function learWeb3callCreateBondFunction1() {
+    if (!checkRequiredFields()) return;
+
     try {
       // If the caller has set the `contract` boolean to true, retrieve the balance of
       // ether in the `exchange contract`, if it is set to false, retrieve the balance
@@ -172,6 +231,8 @@ const CreateBond = () => {
           label="Required"
           placeholder="set bond name"
           onChange={handleInputChange('bondName')}
+          error={!!errors.bondName}
+          helperText={errors.bondName}
         />
         <br />
       </div>
@@ -186,7 +247,14 @@ const CreateBond = () => {
             value={datePickerValues.maturityDate}
             onChange={handleDatePickerChange('maturityDate')}
             renderInput={(params) => (
-              <TextField {...params} required label="Required" size="small" />
+              <TextField
+                {...params}
+                required
+                label="Required"
+                size="small"
+                error={!!errors.maturityDate}
+                helperText={errors.maturityDate}
+              />
             )}
           />
         </LocalizationProvider>
@@ -200,7 +268,14 @@ const CreateBond = () => {
             value={datePickerValues.maturityDateWithTime}
             onChange={handleDatePickerChange('maturityDateWithTime')}
             renderInput={(params) => (
-              <TextField {...params} required label="Required" size="small" />
+              <TextField
+                {...params}
+                required
+                label="Required"
+                size="small"
+                error={!!errors.maturityDateWithTime}
+                helperText={errors.maturityDateWithTime}
+              />
             )}
           />
         </LocalizationProvider>
@@ -218,6 +293,8 @@ const CreateBond = () => {
           label="Required"
           placeholder="set maximun amount"
           onChange={handleInputChange('maxAmount')}
+          error={!!errors.maxAmount}
+          helperText={errors.maxAmount}
         />
         <br />
       </div>
