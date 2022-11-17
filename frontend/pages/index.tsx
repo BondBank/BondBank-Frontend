@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 
   const renderNotConnectedContainer = () => (
     <Button variant="contained" className="button" onClick={connectWallet}>
-      Connect to Wallet
+      Connect to Wallet------
     </Button>
   );
 
@@ -113,7 +113,7 @@ const Home: NextPage = () => {
           <div className={styles.description}>
             This beta app is created for Chainlink hackathon 2022.
           </div>
-          {renderNotConnectedContainer()}
+          {/*renderNotConnectedContainer()*/}
         </div>
 
         {/* Bond List View */}

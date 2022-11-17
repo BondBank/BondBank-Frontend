@@ -84,21 +84,13 @@ function bondCreatorUI(){
             // If the caller has set the `contract` boolean to true, retrieve the balance of
             // ether in the `exchange contract`, if it is set to false, retrieve the balance
             // of the user's address
-            let own = '0x1d44EEDa66CFdD27189373d8B6d12eF9f549F3D5';
-      
-         
+                  
       
             const provider = new ethers.providers.Web3Provider(window.ethereum);
             const signer1 = await provider.getSigner();
             const signerAddr = await signer1.getAddress();
             console.log(`signerAddr---${signerAddr}`);
-                // const listAccounts = (await provider.listAccounts());
-                // console.log(`listAccounts`)
-                // console.log(listAccounts)
-           // const account1=(await provider.listAccounts())[0];
-         //   const account2=(await provider.listAccounts())[1];
-         //   console.log(`account1---${account1}`);
-           // console.log(`account2---${account2}`);
+    
     
             let accounts = await provider.send("eth_requestAccounts", []);
             let account = accounts[0];

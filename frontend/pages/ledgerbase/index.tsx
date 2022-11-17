@@ -10,6 +10,23 @@ import {useEffect, useState} from 'react'
 
 
 
+import '@rainbow-me/rainbowkit/styles.css';
+
+import {
+  getDefaultWallets,
+  RainbowKitProvider,
+} from '@rainbow-me/rainbowkit';
+import {
+  chain,
+  configureChains,
+  createClient,
+  WagmiConfig,
+} from 'wagmi';
+import { alchemyProvider } from 'wagmi/providers/alchemy';
+import { publicProvider } from 'wagmi/providers/public';
+
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+    
 
 
 
@@ -151,7 +168,10 @@ function viewAllBonds(){
   }
     return (
         <div className="container">
-           
+            <div>
+                <h1>rainbow button</h1>
+                <ConnectButton />;
+            </div>
            <div>
            <button className="cta-button connect-wallet-button" onClick={() => fetchAllBonds()}>get all Bonds</button>
            </div>
