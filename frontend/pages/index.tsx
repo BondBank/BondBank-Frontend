@@ -60,7 +60,8 @@ const Home: NextPage = () => {
     enabled: !isDisconnected,
   });
 
-  console.log(bondListData);
+  // console.log(bondListData);
+
   useEffect(() => {
     if (!isDisconnected) {
       const newBondList = bondListData.map(
@@ -81,7 +82,7 @@ const Home: NextPage = () => {
           };
         }
       );
-      console.log(newBondList);
+      // console.log(newBondList);
       setBondList(newBondList);
     }
   }, [isDisconnected, bondListData]);
