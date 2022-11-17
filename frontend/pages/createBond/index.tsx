@@ -222,81 +222,83 @@ const CreateBond = () => {
   return (
     <div className={styles.formContainer}>
       <h1 className={`pageTitle ${styles.title}`}>Create Bond</h1>
-      <div className={styles.formField}>
-        <label className={styles.label}>Bond Name</label>
-        <TextField
-          required
-          size="small"
-          id="bondName"
-          label="Required"
-          placeholder="set bond name"
-          onChange={handleInputChange('bondName')}
-          error={!!errors.bondName}
-          helperText={errors.bondName}
-        />
-      </div>
-      <div className={styles.formField}>
-        <label className={styles.label}>Maturity Date with only date</label>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DesktopDatePicker
-            inputFormat="MM/DD/YYYY"
-            value={datePickerValues.maturityDate}
-            onChange={handleDatePickerChange('maturityDate')}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                required
-                label="Required"
-                size="small"
-                error={!!errors.maturityDate}
-                helperText={errors.maturityDate}
-              />
-            )}
+      <div className={styles.form}>
+        <div className={styles.formField}>
+          <label className={styles.label}>Bond Name</label>
+          <TextField
+            required
+            size="small"
+            id="bondName"
+            label="Required"
+            placeholder="set bond name"
+            onChange={handleInputChange('bondName')}
+            error={!!errors.bondName}
+            helperText={errors.bondName}
           />
-        </LocalizationProvider>
-      </div>
-      <div className={styles.formField}>
-        <label className={styles.label}>Maturity Date with Time</label>
-        <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <DateTimePicker
-            value={datePickerValues.maturityDateWithTime}
-            onChange={handleDatePickerChange('maturityDateWithTime')}
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                required
-                label="Required"
-                size="small"
-                error={!!errors.maturityDateWithTime}
-                helperText={errors.maturityDateWithTime}
-              />
-            )}
+        </div>
+        <div className={styles.formField}>
+          <label className={styles.label}>Maturity Date with only date</label>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DesktopDatePicker
+              inputFormat="MM/DD/YYYY"
+              value={datePickerValues.maturityDate}
+              onChange={handleDatePickerChange('maturityDate')}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  required
+                  label="Required"
+                  size="small"
+                  error={!!errors.maturityDate}
+                  helperText={errors.maturityDate}
+                />
+              )}
+            />
+          </LocalizationProvider>
+        </div>
+        <div className={styles.formField}>
+          <label className={styles.label}>Maturity Date with Time</label>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateTimePicker
+              value={datePickerValues.maturityDateWithTime}
+              onChange={handleDatePickerChange('maturityDateWithTime')}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  required
+                  label="Required"
+                  size="small"
+                  error={!!errors.maturityDateWithTime}
+                  helperText={errors.maturityDateWithTime}
+                />
+              )}
+            />
+          </LocalizationProvider>
+        </div>
+        <div className={styles.formField}>
+          {/*add validation to make this field required and should be with in range of $1000 to $100k*/}
+          <label className={styles.label}>Maximum Amount</label>
+          <TextField
+            required
+            size="small"
+            id="maturityDateWithTime"
+            label="Required"
+            placeholder="set maximun amount"
+            onChange={handleInputChange('maxAmount')}
+            error={!!errors.maxAmount}
+            helperText={errors.maxAmount}
           />
-        </LocalizationProvider>
-      </div>
-      <div className={styles.formField}>
-        {/*add validation to make this field required and should be with in range of $1000 to $100k*/}
-        <label className={styles.label}>Maximum Amount</label>
-        <TextField
-          required
-          size="small"
-          id="maturityDateWithTime"
-          label="Required"
-          placeholder="set maximun amount"
-          onChange={handleInputChange('maxAmount')}
-          error={!!errors.maxAmount}
-          helperText={errors.maxAmount}
-        />
-      </div>
-      <div className={styles.buttonSection}>
-        <Button onClick={() => goBackToManageBonds()}>Cancel</Button>
-        <Button
-          variant="contained"
-          className={styles.button}
-          onClick={() => learWeb3callCreateBondFunction1()}
-        >
-          Create
-        </Button>
+        </div>
+        <div className={styles.buttonSection}>
+          <Button onClick={() => goBackToManageBonds()}>Cancel</Button>
+          <Button
+            variant="contained"
+            className={styles.button}
+            onClick={() => learWeb3callCreateBondFunction1()}
+          >
+            Create
+          </Button>
+        </div>
       </div>
       {/* <div>
         <h2>{`Bondid '${bondId}' is created`}</h2>
