@@ -58,6 +58,7 @@ a {
 }
 
 .pageTitle {
+  display: inline-block;
   font-size: 2rem;
   margin: 2rem 0;
   background: var(--text-linear-gradient);

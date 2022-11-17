@@ -1,5 +1,5 @@
 .item {
-  width: 50vw;
+  width: 90%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -10,30 +10,57 @@
   border-radius: 0.4rem;
 }
 
-.itemInfo, .matureDate {
+.itemInfo {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
 }
 
-.name, .details, .matureDate {
+.bondId {
   margin-right: 2rem;
 }
 
-.name {
+.bondManager,
+.bondStartDate,
+.bondMaturityDate {
+  margin-right: 2rem;
+}
+
+.bondManager,
+.bondStartDate {
+  padding-right: 2rem;
+  border-right: 1px solid grey;
+}
+
+.bondId {
   font-weight: bold;
   font-size: 1.1rem;
 }
 
-.details {
-  font-style: italic;
-  color: #a1a1aa;
+.managerLabel,
+.startDateLabel,
+.matureDateLabel {
+  font-size: 0.9rem;
+  padding: 0.2rem 0.3rem;
+  border-radius: 0.2rem;
+  margin-right: 0.6rem;
 }
 
-.matureDateTxt {
-  margin-top: 0.1rem;
-  margin-left: 0.3rem;
+.managerLabel {
+  background-color: #1976d2;
+}
+
+.startDateLabel {
+  background-color: #388e3c;
+}
+
+.matureDateLabel {
+  background-color: #c2185b;
+}
+
+.infoTxt {
+  padding: 0.22rem 0;
 }
 
 .buyButton {

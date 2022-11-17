@@ -3,14 +3,16 @@ import { Button } from '@mui/material';
 import AccessAlarmsTwoToneIcon from '@mui/icons-material/AccessAlarmsTwoTone';
 
 const ListItem = ({
-  name,
-  details,
-  matureDate,
+  bondId,
+  bondManager,
+  bondMaturityDate,
+  bondStartDate,
   showBuyButton,
 }: {
-  name: string;
-  details: string;
-  matureDate: string;
+  bondId: number;
+  bondManager: string;
+  bondMaturityDate: string;
+  bondStartDate: string;
   showBuyButton: boolean;
 }) => {
   const handleBuy = () => {
@@ -21,11 +23,18 @@ const ListItem = ({
   return (
     <div className={styles.item}>
       <div className={styles.itemInfo}>
-        <div className={styles.name}>{name}</div>
-        <div className={styles.details}>{details}</div>
-        <div className={styles.matureDate}>
-          <AccessAlarmsTwoToneIcon color="secondary" />
-          <span className={styles.matureDateTxt}>Due on: {matureDate}</span>
+        <div className={styles.bondId}>{bondId}</div>
+        <div className={styles.bondManager}>
+          <span className={styles.managerLabel}>Manager</span>
+          <span className={styles.infoTxt}>{bondManager}</span>
+        </div>
+        <div className={styles.bondStartDate}>
+          <span className={styles.startDateLabel}>Started at</span>
+          <span className={styles.infoTxt}>{bondStartDate}</span>
+        </div>
+        <div className={styles.bondMaturityDate}>
+          <span className={styles.matureDateLabel}>Due in</span>
+          <span className={styles.infoTxt}>{bondMaturityDate} days</span>
         </div>
       </div>
 

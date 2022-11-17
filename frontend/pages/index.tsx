@@ -1,15 +1,21 @@
 import type { NextPage } from 'next';
-import { useState } from 'react';
-// import { ethers } from 'ethers';
-import { useAccount } from 'wagmi';
+import { useState, useEffect } from 'react';
+import { BigNumber } from 'ethers';
+import { useAccount, useContractRead } from 'wagmi';
 import { Button } from '@mui/material';
+import dayjs from 'dayjs';
 import ListItem from '../components/ListItem';
 import ConnectTips from '../components/ConnectTips';
 import styles from '../styles/Home.module.css';
 
+import {
+  CreateBondandAdminRole_CONTRACT_ABI,
+  CreateBondandAdminRole_CONTRACT_ADDRESS,
+} from '../constants';
+
 const Home: NextPage = () => {
   const { address, isDisconnected } = useAccount();
-  // const [isConnected, setIsConnected] = useState(false);
+  const [bondList, setBondList] = useState([]);
   // const [provider, setProvider] = useState();
 
   const registerAsAdmin = () => (
@@ -35,31 +41,50 @@ const Home: NextPage = () => {
       Create Bond
     </Button>
   );
-  async function getAllBonds() {}
 
+  type ContractBondItem = [string, BigNumber, BigNumber, string[]];
   type BondItem = {
-    name: string;
-    details: string;
-    matureDate: string;
-    seller: string;
+    bondManager: string;
+    bondMaturityDate: string;
+    bondStartDate: string;
     buyers: string[];
   };
 
-  type BondList = Array<BondItem>;
+  const {
+    data: bondListData,
+    isLoading: isBondListLoading,
+  }: { data: any; isLoading: boolean } = useContractRead({
+    address: CreateBondandAdminRole_CONTRACT_ADDRESS,
+    abi: CreateBondandAdminRole_CONTRACT_ABI,
+    functionName: 'getAllBonds',
+    enabled: !isDisconnected,
+  });
 
-  const bondItem: BondItem = {
-    name: 'Bond 1',
-    details:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod',
-    matureDate: '2023.02.16',
-    seller: '0x123123123123123123123123',
-    buyers: [
-      '0x456456456456456456456456456456',
-      '0x789789789789789789789789789789',
-    ],
-  };
+  console.log(bondListData);
+  useEffect(() => {
+    if (!isDisconnected) {
+      const newBondList = bondListData.map(
+        ([
+          BondManager,
+          bondStartDate,
+          bondMaturityDate,
+          buyers,
+        ]: ContractBondItem) => {
+          const startDateObj = new Date(bondStartDate.toNumber() * 1000);
+          const startDate = dayjs(startDateObj).format('YYYY-MM-DD hh:mm:ss');
 
-  const bondList: BondList = [bondItem, bondItem, bondItem];
+          return {
+            bondManager: BondManager,
+            bondMaturityDate: bondMaturityDate.toString(),
+            bondStartDate: startDate,
+            buyers,
+          };
+        }
+      );
+      console.log(newBondList);
+      setBondList(newBondList);
+    }
+  }, [isDisconnected, bondListData]);
 
   return (
     <div className={styles.container}>
@@ -69,24 +94,30 @@ const Home: NextPage = () => {
         <ConnectTips />
       ) : (
         /* Bond List View - Wallet Connected */
-        <>
-          {bondList.map(({ name, details, matureDate, buyers }, index) => {
-            // Get user address from Metamask or RainbowKit ConnectButton
-            // If user address not in buyers list, show Buy button
-            const userAddress = address && address.toString();
-            const showBuyButton = !buyers.includes(userAddress!);
+        bondList.length && (
+          <>
+            <div className="pageTitle">Available Bonds</div>
+            {bondList.map((item: BondItem, index) => {
+              const { bondManager, bondMaturityDate, bondStartDate, buyers } =
+                item;
+              // Get user address from Metamask or RainbowKit ConnectButton
+              // If user address not in buyers list, show Buy button
+              const userAddress = address && address.toString();
+              const showBuyButton = !buyers.includes(userAddress!);
 
-            return (
-              <ListItem
-                key={index}
-                name={name}
-                details={details}
-                matureDate={matureDate}
-                showBuyButton={showBuyButton}
-              />
-            );
-          })}
-        </>
+              return (
+                <ListItem
+                  key={index}
+                  bondId={index + 1}
+                  bondManager={bondManager}
+                  bondMaturityDate={bondMaturityDate}
+                  bondStartDate={bondStartDate}
+                  showBuyButton={showBuyButton}
+                />
+              );
+            })}
+          </>
+        )
       )}
       {/* <h2>Registration Section</h2>
           <div>{registerAsAdmin()}</div>
