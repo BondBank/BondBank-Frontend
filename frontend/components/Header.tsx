@@ -44,7 +44,7 @@ const Header = () => {
             <a className={styles.navLink}>Create Bond</a>
           </Link>
 
-          <Link href="/About">
+          <Link href="/about">
             <a className={styles.navLink}>About</a>
           </Link>
         </div>

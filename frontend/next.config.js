@@ -2,6 +2,21 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-}
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.shields.io',
+        pathname: '/**',
+      },
 
-module.exports = nextConfig
+      {
+        protocol: 'https',
+        hostname: 'custom-icon-badges.demolab.com',
+        pathname: '/**',
+      },
+    ],
+  },
+};
+
+module.exports = nextConfig;
