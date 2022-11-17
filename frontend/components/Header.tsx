@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { useState } from 'react';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import styles from '../styles/Header.module.css';
 // import Menu from './Menu';
@@ -28,25 +29,34 @@ import styles from '../styles/Header.module.css';
 
 // const menuItems: MenuItemList = [menuItem, menuItem, menuItem];
 
+const navList = [
+  { link: '/', text: 'Home' },
+  { link: '/bondCreatorUI', text: 'Create Bond' },
+  { link: '/about', text: 'About' },
+];
+
 const Header = () => {
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
   return (
     <nav className={styles.header}>
       <div className={styles.main}>
         <h1 className={styles.logo}>BondBank Dapp - dev version</h1>
         <div className={styles.navigation}>
-          <Link href="/">
-            <a className={styles.navLink}>Home</a>
-          </Link>
-
           {/* <Menu menuName="Test Menu" menuItems={menuItems} /> */}
 
-          <Link href="/bondCreatorUI">
-            <a className={styles.navLink}>Create Bond</a>
-          </Link>
-
-          <Link href="/about">
-            <a className={styles.navLink}>About</a>
-          </Link>
+          {navList.map((navItem, index) => (
+            <Link href={navItem.link} key={index}>
+              <a
+                className={`${styles.navLink} ${
+                  selectedIndex === index ? styles.selected : ''
+                }`}
+                onClick={() => setSelectedIndex(index)}
+              >
+                {navItem.text}
+              </a>
+            </Link>
+          ))}
         </div>
       </div>
 

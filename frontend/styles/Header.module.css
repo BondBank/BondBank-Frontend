@@ -30,6 +30,6 @@
 }
 
 .navLink:hover,
-.navLinkSelected {
+.selected {
   background: var(--linear-gradient-low-transparency);
 }
