@@ -1,0 +1,35 @@
+.header {
+  display: flex;
+  padding: 0 2rem;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--linear-gradient-low-transparency);
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.logo {
+  margin: 0;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 3rem;
+}
+
+.navLink {
+  padding: 1.5rem 2rem;
+  font-weight: bold;
+  transition: all 0.2s linear;
+}
+
+.navLink:hover,
+.navLinkSelected {
+  background: var(--linear-gradient-low-transparency);
+}

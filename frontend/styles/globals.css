@@ -57,36 +57,6 @@ a {
   background: var(--linear-gradient-low-transparency);
 }
 
-/* Header Styles */
-.header {
-  display: flex;
-  padding: 0 2rem;
-  align-items: center;
-  background: var(--linear-gradient-low-transparency);
-}
-
-.logo {
-  margin: 0;
-}
-
-.navigation {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  margin-left: 3rem;
-}
-
-.navLink {
-  padding: 1.5rem 2rem;
-  font-weight: bold;
-  transition: all 0.2s linear;
-}
-
-.navLink:hover,
-.navLinkSelected {
-  background: var(--linear-gradient-low-transparency);
-}
-
 .pageTitle {
   font-size: 2rem;
   margin: 2rem 0;

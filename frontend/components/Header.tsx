@@ -1,46 +1,56 @@
 import Link from 'next/link';
-import Menu from './Menu';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import styles from '../styles/Header.module.css';
+// import Menu from './Menu';
 
-type MenuOptions = Array<{ name: string; link: string }>;
-type MenuItem = { title: string; options: MenuOptions };
-type MenuItemList = Array<MenuItem>;
+// type MenuOptions = Array<{ name: string; link: string }>;
+// type MenuItem = { title: string; options: MenuOptions };
+// type MenuItemList = Array<MenuItem>;
 
-// Example menu items for dropdown menu
-const menuItem: MenuItem = {
-  title: 'Learn',
-  options: [
-    {
-      name: 'Home',
-      link: '/',
-    },
-    {
-      name: 'Create Bond',
-      link: '/bondCreatorUI',
-    },
-    {
-      name: 'Buy Bonds',
-      link: '/manageBondsUI',
-    },
-  ],
-};
+// // Example menu items for dropdown menu
+// const menuItem: MenuItem = {
+//   title: 'Learn',
+//   options: [
+//     {
+//       name: 'Home',
+//       link: '/',
+//     },
+//     {
+//       name: 'Create Bond',
+//       link: '/bondCreatorUI',
+//     },
+//     {
+//       name: 'Buy Bonds',
+//       link: '/manageBondsUI',
+//     },
+//   ],
+// };
 
-const menuItems: MenuItemList = [menuItem, menuItem, menuItem];
+// const menuItems: MenuItemList = [menuItem, menuItem, menuItem];
 
 const Header = () => {
   return (
-    <nav className="header">
-      <h1 className="logo">BondBank Dapp - dev version</h1>
-      <div className="navigation">
-        <Link href="/">
-          <a className="navLink">Home</a>
-        </Link>
+    <nav className={styles.header}>
+      <div className={styles.main}>
+        <h1 className={styles.logo}>BondBank Dapp - dev version</h1>
+        <div className={styles.navigation}>
+          <Link href="/">
+            <a className={styles.navLink}>Home</a>
+          </Link>
 
-        <Menu menuName="Test Menu" menuItems={menuItems} />
+          {/* <Menu menuName="Test Menu" menuItems={menuItems} /> */}
 
-        <Link href="/About">
-          <a className="navLink">About</a>
-        </Link>
+          <Link href="/bondCreatorUI">
+            <a className={styles.navLink}>Create Bond</a>
+          </Link>
+
+          <Link href="/About">
+            <a className={styles.navLink}>About</a>
+          </Link>
+        </div>
       </div>
+
+      <ConnectButton />
     </nav>
   );
 };
