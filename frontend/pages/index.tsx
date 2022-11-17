@@ -1,31 +1,16 @@
 import type { NextPage } from 'next';
-// import Image from 'next/image';
-import styles from '../styles/Home.module.css';
 import { useState } from 'react';
-import { ethers } from 'ethers';
-// import { Router } from 'next/router';
-// import Link from 'next/link';
+// import { ethers } from 'ethers';
+import { useAccount } from 'wagmi';
 import { Button } from '@mui/material';
 import ListItem from '../components/ListItem';
-// import Card from '@mui/material/Card';
-// import CardActions from '@mui/material/CardActions';
-// import CardContent from '@mui/material/CardContent';
-// import Typography from '@mui/material/Typography';
-
-//import { connect } from 'http2';
-const tokenIdsMinted = 1;
-function renderButton() {}
+import ConnectTips from '../components/ConnectTips';
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
-  //const [walletAddress, setWalletAddress]; //= useState(null);
-  const [isConnected, setIsConnected] = useState(false);
-  const [provider, setProvider] = useState();
-
-  const renderNotConnectedContainer = () => (
-    <Button variant="contained" className="button" onClick={connectWallet}>
-      Connect to Wallet------
-    </Button>
-  );
+  const { address, isDisconnected } = useAccount();
+  // const [isConnected, setIsConnected] = useState(false);
+  // const [provider, setProvider] = useState();
 
   const registerAsAdmin = () => (
     <Button href="/registerAsAdmin" className="button">
@@ -50,28 +35,6 @@ const Home: NextPage = () => {
       Create Bond
     </Button>
   );
-
-  const connectWallet = async () => {};
-  /*
-   * Let's define this method so our code doesn't break.
-   * We will write the logic for this next!
-   */
-  async function connect() {
-    if (typeof window.ethereum !== 'undefined') {
-      try {
-        await ethereum.request({ method: 'eth_requestAccounts' });
-        setIsConnected(true);
-        let connectedProvider = new ethers.providers.Web3Provider(
-          window.ethereum
-        );
-        setSigner(connectedProvider.getSigner());
-      } catch (e) {
-        console.log(e);
-      }
-    } else {
-      setIsConnected(false);
-    }
-  }
   async function getAllBonds() {}
 
   type BondItem = {
@@ -99,61 +62,37 @@ const Home: NextPage = () => {
   const bondList: BondList = [bondItem, bondItem, bondItem];
 
   return (
-    <div>
-      <div className={styles.main}>
-        {/* Show / hide welcome section v.s. bond list view based on wallet connection state */}
+    <div className={styles.container}>
+      {/* Show / hide welcome section v.s. bond list view based on wallet connection state */}
+      {isDisconnected ? (
+        /* Connect Tips - Wallet Not Connected */
+        <ConnectTips />
+      ) : (
+        /* Bond List View - Wallet Connected */
+        <>
+          {bondList.map(({ name, details, matureDate, buyers }, index) => {
+            // Get user address from Metamask or RainbowKit ConnectButton
+            // If user address not in buyers list, show Buy button
+            const userAddress = address && address.toString();
+            const showBuyButton = !buyers.includes(userAddress!);
 
-        {/* Welcome Section */}
-        <div className={styles.welcomeSection}>
-          <h1 className="pageTitle">Welcome to BondBank App</h1>
-          <div className={styles.description}>
-            It enables asset managers to create different bonds using token DAI,
-            ETH, BTC, AVAX for now!
-          </div>
-          <div className={styles.description}>
-            This beta app is created for Chainlink hackathon 2022.
-          </div>
-          {/*renderNotConnectedContainer()*/}
-        </div>
-
-        {/* Bond List View */}
-        {bondList.map(({ name, details, matureDate, buyers }, index) => {
-          // Get user address from Metamask or RainbowKit ConnectButton
-          const userAddress = '0x234234234234234234234234234234';
-          // If user address not in buyers list, show Buy button
-          const showBuyButton = !buyers.includes(userAddress);
-
-          return (
-            <ListItem
-              key={index}
-              name={name}
-              details={details}
-              matureDate={matureDate}
-              showBuyButton={showBuyButton}
-            />
-          );
-        })}
-
-        {/* <h2>Registration Section</h2>
+            return (
+              <ListItem
+                key={index}
+                name={name}
+                details={details}
+                matureDate={matureDate}
+                showBuyButton={showBuyButton}
+              />
+            );
+          })}
+        </>
+      )}
+      {/* <h2>Registration Section</h2>
           <div>{registerAsAdmin()}</div>
           <div>{registerAsBondBuyer()}</div> */}
 
-        {/* <Card sx={{ minWidth: 450 }}>
-          <CardContent>
-            <Typography variant="h5" component="div">
-              Login Section
-            </Typography>
-            <Typography variant="body2" sx={{ mt: 1.5 }}>
-              Some description of the login section
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <div>{bondCreatorUI()}</div>
-            <div>{bondBuyerUI()}</div>
-          </CardActions>
-        </Card> */}
-
-        {/* <div className={styles.grid}>
+      {/* <div className={styles.grid}>
           <div>
             <a href="/bondCreatorUI" className={styles.card}>
               <h2>Bond Creator UI &rarr;</h2>
@@ -161,7 +100,6 @@ const Home: NextPage = () => {
             </a>
           </div>
         </div> */}
-      </div>
 
       {/* <div>
         <img className={styles.image} src="1.png" />
