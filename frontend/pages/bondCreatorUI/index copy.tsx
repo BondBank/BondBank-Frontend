@@ -1,4 +1,5 @@
 import type { NextPage } from 'next';
+//const NextPage = require('next')
 import { ethers, Contract } from 'ethers';
 import { useState } from 'react';
 import Router from 'next/router';
@@ -15,9 +16,14 @@ const BondCreatorUI: NextPage = () => {
   const { isDisconnected } = useAccount();
   const [adminFlag, setAdminFlag] = useState(false);
 
-  const createNewBondPage =  () => {
-    
-    Router.push('/createBond');
+  const createNewBondPage = async () => {
+    const res = await check_AdminRole();
+    if(res)
+    {
+      Router.push('/createBond');
+    } else {
+      Router.push('/createBond');
+    }
     
   };
 
@@ -29,7 +35,7 @@ const BondCreatorUI: NextPage = () => {
   });
 
   console.log('>>>>>> isAdminRole', isAdminRole);
-  async function check_AdminRole() { 
+  async function check_AdminRole(): boolean { 
     try {
       // If the caller has set the `contract` boolean to true, retrieve the balance of
       // ether in the `exchange contract`, if it is set to false, retrieve the balance
@@ -55,15 +61,16 @@ const BondCreatorUI: NextPage = () => {
       );
 
       try {
-          console.log('----');
-          const t = await erc20.checkIfAddminRoleIsPresent();
-          console.log(t);
-          return t;
+        console.log('----');
+        const t = await erc20.checkIfAddminRoleIsPresent();
+        console.log(t);
+        return t;
+
       } catch (e) {
         console.error('check_AdminRole()--UnabletoConnectTowallet---');
         console.error(e);
       }
-
+      return false;
     } catch (err) {
       console.error('assign_AdminRole():err----');
       console.error(err);
@@ -88,28 +95,19 @@ const BondCreatorUI: NextPage = () => {
         account = accounts[1];
         console.log(`accountsChanged--${account}`); // Print new address
       });
-      
-      
+
       const erc20 = new ethers.Contract(
         CreateBondandAdminRole_CONTRACT_ADDRESS,
         CreateBondandAdminRole_CONTRACT_ABI,
         signer1
       );
 
-      
- 
       try {
-        const t = await erc20.checkIfAddminRoleIsPresent();
-        if (t) {
-           console.error('Already admin cannot assign');
-           createNewBondPage();
-
-        } else {
-
+        if (true) {
           console.log('----');
           const t = await erc20.addADMINrole();
           console.log(t);
-
+        } else {
         }
       } catch (e) {
         console.error('assign_AdminRole()--UnabletoConnectTowallet---');
@@ -138,7 +136,9 @@ const BondCreatorUI: NextPage = () => {
             {`You aren't admin yet, get yourself admin role to start creating
             bonds`}
           </h2>
-          
+          <Button variant="contained" onClick={() => check_AdminRole()}>
+            Check Assign Admin Role
+          </Button>
           <br></br>
           <Button variant="contained" onClick={() => assign_AdminRole()}>
             Assign Admin Role

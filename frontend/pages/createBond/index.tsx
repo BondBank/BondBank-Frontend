@@ -147,7 +147,16 @@ const CreateBond = () => {
           `maturityDateWithTime-${datePickerValues.maturityDateWithTime?.unix()}`
         );
 
-        erc20.CreateBond(
+        erc20.createBond(
+          inputValues.bondName,
+          // converting dayjs obj to unix timestamp in seconds (same as block.timestamp)
+          //datePickerValues.maturityDate?.unix(),
+          '450',
+          inputValues.maxAmount
+         
+        );
+            /*
+          erc20.CreateBond(
           inputValues.bondName,
           // converting dayjs obj to unix timestamp in seconds (same as block.timestamp)
           datePickerValues.maturityDate?.unix(),
@@ -156,6 +165,9 @@ const CreateBond = () => {
           // converting dayjs obj to unix timestamp in seconds (same as block.timestamp)
           datePickerValues.maturityDateWithTime?.unix()
         );
+
+          */
+
         let currentBond = 0;
         erc20.on(
           'BondCreated',
