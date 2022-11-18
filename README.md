@@ -62,17 +62,23 @@ Step 5: Select Bond Redemption to collect funds. <<this is where CHAINLINK autom
 #### Create Bond Page:
 
         Part A:
-        
+            account 1: (ends with F3D5)
             1. User(x) should assign admin role to his wallet.
             2. Once he has admin role, then User (x) can navigate to create one bond ('Bond1') once.
+            after creating Bond
+>>>> ![image](https://user-images.githubusercontent.com/97905727/202767650-7dc0fd81-64ac-4f7f-999f-53361d3b3546.png)
 
         Part B:
-            switch to account 2:
+            switch to account 2: (ends with 3348)
 
-            3. User (y)<with diff wallet addr> connects to site, then 'Buy' Button is displayed for bond('Bond1').
+            3. User (y)<with diff wallet addr | who is yet to buy any bond> connects to site, then 'Buy' Button is displayed for bond('Bond1').
+            
+>>>> ![image](https://user-images.githubusercontent.com/97905727/202767000-726f1248-d9e8-455e-a241-ff15fccb16e1.png)
+
+            
             4. Now User(y) can buy 'Bond1' only once.
             
-            ![image](https://user-images.githubusercontent.com/97905727/202764186-3807a255-e986-44a9-934b-27d58f5503e5.png)
+            
 
 
     
