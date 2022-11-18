@@ -24,9 +24,9 @@ const ListItem = ({
   bondStartDate: string;
   showBuyButton: boolean;
 }) => {
-  const handleBuy = () => {
+  const handleBuy = (id:number) => {
     // handle buy button click
-    console.log('>>>>>> Buy button clicked!');
+
   };
 
   return (
