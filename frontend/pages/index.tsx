@@ -117,6 +117,7 @@ const Home: NextPage = () => {
               return (
                 <ListItem
                   key={index}
+                  bondId={index}
                   bondName={bondName}
                   bondManager={bondManager}
                   bondMaturityDate={bondMaturityDate}

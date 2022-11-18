@@ -12,21 +12,24 @@ const truncateAddress = (address: string): string => {
 };
 
 const ListItem = ({
+  bondId,
   bondName,
   bondManager,
   bondMaturityDate,
   bondStartDate,
   showBuyButton,
 }: {
+  bondId: number;
   bondName: string;
   bondManager: string;
   bondMaturityDate: string;
   bondStartDate: string;
   showBuyButton: boolean;
 }) => {
-  const handleBuy = (id:number) => {
+  const handleBuy = (bondId: number) => {
     // handle buy button click
-
+    console.log('>>>>>>', bondId);
+    console.log('>>>>>> Buy button clicked!');
   };
 
   return (
@@ -51,7 +54,7 @@ const ListItem = ({
         <Button
           variant="contained"
           className={styles.buyButton}
-          onClick={handleBuy}
+          onClick={() => handleBuy(bondId)}
         >
           Buy
         </Button>
