@@ -48,8 +48,18 @@ Step 5: Select Bond Redemption to collect funds. <<this is where CHAINLINK autom
 #### Home Page:
 
         Take away:
-        - Show a wallet with bonds bought
+        - Connect wallet in Home page
+        ![image](https://user-images.githubusercontent.com/97905727/202764373-27000f96-f4b0-43e6-b679-5d8cf6e3e513.png)
+
+        
+        - Show a wallet with bonds bought. (Buy button missing in below screenshot)
+        
+        ![image](https://user-images.githubusercontent.com/97905727/202765066-f2638fcb-7780-4f5f-9e19-34e068336efd.png)
+        
         - Unable to buy the same bond once bought
+        
+        ![image](https://user-images.githubusercontent.com/97905727/202764034-6c3d4e44-8301-40ae-8539-ffc1140ed540.png)
+
 
 #### Create Bond Page:
 
@@ -63,6 +73,9 @@ Step 5: Select Bond Redemption to collect funds. <<this is where CHAINLINK autom
 
             3. User (y)<with diff wallet addr> connects to site, then 'Buy' Button is displayed for bond('Bond1').
             4. Now User(y) can buy 'Bond1' only once.
+            
+            ![image](https://user-images.githubusercontent.com/97905727/202764186-3807a255-e986-44a9-934b-27d58f5503e5.png)
+
 
     
 ### Conclusion:
