@@ -64,7 +64,7 @@ const Home: NextPage = () => {
   console.log(bondListData);
 
   useEffect(() => {
-    if (!isDisconnected) {
+    if (!isDisconnected && bondListData) {
       const newBondList = bondListData.map(
         ([
           bondName,

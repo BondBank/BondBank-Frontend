@@ -15,6 +15,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/registerAdminForm/index.jsx", "test_js/js_test_contractInteraction.js", "test/contractInteraction_js.js"],, "pages/bondCreatorUI/index.jsx"
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/registerAdminForm/index.jsx", "test_js/js_test_contractInteraction.js", "test/contractInteraction_js.js"],
   "exclude": ["node_modules"]
 }

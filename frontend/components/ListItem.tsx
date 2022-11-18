@@ -2,6 +2,14 @@ import styles from '../styles/ListItem.module.css';
 import { Button } from '@mui/material';
 import AccessAlarmsTwoToneIcon from '@mui/icons-material/AccessAlarmsTwoTone';
 
+import { Contract, ethers } from "ethers";
+import {
+ 
+  CreateBondandAdminRole_CONTRACT_ABI,
+  CreateBondandAdminRole_CONTRACT_ADDRESS,
+} from "../constants";
+
+
 const truncateAddress = (address: string): string => {
   if (!address) {
     console.error(`>>>>>> Address is ${address}`);
@@ -26,10 +34,27 @@ const ListItem = ({
   bondStartDate: string;
   showBuyButton: boolean;
 }) => {
-  const handleBuy = (bondId: number) => {
+  const handleBuy = async (bondId: number) => {
     // handle buy button click
     console.log('>>>>>>', bondId);
-    console.log('>>>>>> Buy button clicked!');
+    try{
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const signer12 = await provider.getSigner();
+      
+      const erc20 
+      = new ethers.Contract(CreateBondandAdminRole_CONTRACT_ADDRESS,
+          CreateBondandAdminRole_CONTRACT_ABI,signer12);
+      
+          const fee = ethers.utils.parseEther('0.001')
+          
+       const t = await erc20.buybond(bondId, {value: fee});
+       console.log('--buyBondEnded--');
+       console.log(t)
+       console.log('--buyBondEnded-->>>>>');
+      } catch (err) {
+          console.error(err);
+          
+      }
   };
 
   return (
