@@ -49,12 +49,14 @@ Step 5: Select Bond Redemption to collect funds. <<this is where CHAINLINK autom
 
         Take away:
         - Connect wallet in Home page
-        ![image](https://user-images.githubusercontent.com/97905727/202764373-27000f96-f4b0-43e6-b679-5d8cf6e3e513.png)
+>>>> ![image](https://user-images.githubusercontent.com/97905727/202766281-7296cbd6-7c92-4b52-9413-0e30f44bf1de.png)
+
+
 
         
         - Show a wallet with bonds bought. (Buy button missing in below screenshot). Unable to buy the same bond once bought
         
-![image](https://user-images.githubusercontent.com/97905727/202765426-132077c3-743b-4355-a8d0-976aa0c371d6.png)
+>>>> ![image](https://user-images.githubusercontent.com/97905727/202765426-132077c3-743b-4355-a8d0-976aa0c371d6.png)
 
 
 #### Create Bond Page:
