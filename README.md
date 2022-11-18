@@ -83,5 +83,6 @@ Step 5: Select Bond Redemption to collect funds. <<this is where CHAINLINK autom
 
     
 ### Conclusion:
-        In future, we have planned to use chainlink oracle data feed to get price for crypto tokens, and our project and ideas evolves into better everyday.
+        In future, we have planned to use chainlink oracle data feed to get price for crypto tokens, 
+        our ideas evolve every everyday, and therefore we will adopt more chainlink services into our project.
         Thanks for the oppotunity to Chainlink and my teammates.
