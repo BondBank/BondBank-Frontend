@@ -58,7 +58,7 @@ Step 5: Select Bond Redemption to collect funds. <<this is where CHAINLINK autom
         
         - Unable to buy the same bond once bought
         
-        ![image](https://user-images.githubusercontent.com/97905727/202764034-6c3d4e44-8301-40ae-8539-ffc1140ed540.png)
+![image](https://user-images.githubusercontent.com/97905727/202765426-132077c3-743b-4355-a8d0-976aa0c371d6.png)
 
 
 #### Create Bond Page:
