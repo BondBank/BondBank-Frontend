@@ -42,8 +42,9 @@ const Home: NextPage = () => {
     </Button>
   );
 
-  type ContractBondItem = [string, BigNumber, BigNumber, string[]];
+  type ContractBondItem = [string, BigNumber, string, BigNumber, string[]];
   type BondItem = {
+    bondName: string;
     bondManager: string;
     bondMaturityDate: string;
     bondStartDate: string;
@@ -60,21 +61,23 @@ const Home: NextPage = () => {
     enabled: !isDisconnected,
   });
 
-  // console.log(bondListData);
+  console.log(bondListData);
 
   useEffect(() => {
     if (!isDisconnected) {
       const newBondList = bondListData.map(
         ([
-          BondManager,
+          bondName,
           bondStartDate,
           bondMaturityDate,
+          BondManager,
           buyers,
         ]: ContractBondItem) => {
           const startDateObj = new Date(bondStartDate.toNumber() * 1000);
           const startDate = dayjs(startDateObj).format('YYYY-MM-DD hh:mm:ss');
 
           return {
+            bondName,
             bondManager: BondManager,
             bondMaturityDate: bondMaturityDate.toString(),
             bondStartDate: startDate,
@@ -99,8 +102,13 @@ const Home: NextPage = () => {
           <>
             <div className="pageTitle">Available Bonds</div>
             {bondList.map((item: BondItem, index) => {
-              const { bondManager, bondMaturityDate, bondStartDate, buyers } =
-                item;
+              const {
+                bondName,
+                bondManager,
+                bondMaturityDate,
+                bondStartDate,
+                buyers,
+              } = item;
               // Get user address from Metamask or RainbowKit ConnectButton
               // If user address not in buyers list, show Buy button
               const userAddress = address && address.toString();
@@ -109,7 +117,7 @@ const Home: NextPage = () => {
               return (
                 <ListItem
                   key={index}
-                  bondId={index + 1}
+                  bondName={bondName}
                   bondManager={bondManager}
                   bondMaturityDate={bondMaturityDate}
                   bondStartDate={bondStartDate}
