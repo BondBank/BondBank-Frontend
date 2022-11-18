@@ -150,8 +150,8 @@ const CreateBond = () => {
         erc20.createBond(
           inputValues.bondName,
           // converting dayjs obj to unix timestamp in seconds (same as block.timestamp)
-          //datePickerValues.maturityDate?.unix(),
-          '450',
+         datePickerValues.maturityDate?.unix(),
+         
           inputValues.maxAmount
          
         );

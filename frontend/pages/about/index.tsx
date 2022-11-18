@@ -13,6 +13,9 @@ const About: NextPage = () => {
           different security.
         </p>
         <p>
+          <h4>Motivation: </h4>For unsophisticated crypto investors, there are very limited ways to generate passive income that is safe and predictable. Currently most methods for generating passive income has come from Cefi protocols such as Celcius, Crypto.com, and Blockfi. Recent events has proven that these institutions are not trsutworthy, as they were able to hide their insolvency from the public; It is clear that there is a need for decentralized, on-chain bonds for investors. This project aims to make this process simple by allowing fund managers to offer investors a crypto bonds (ERC1155 token) that provides that exposure to the market. In this project, we will use Aave and integrate their WETH gateway contract to show a working example of how the bonds will work.
+        </p>
+        <p>
           This project was created by BondBank team to compete at "Chainlink
           Hackathon 2022".
         </p>
@@ -59,20 +62,20 @@ const About: NextPage = () => {
           </li>
           <li className={styles.member}>
             <a
-              href="https://github.com/AmadiMichael"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Michaels (Backend Developer)
-            </a>
-          </li>
-          <li className={styles.member}>
-            <a
               href="https://github.com/levblanc"
               target="_blank"
               rel="noreferrer"
             >
               Nikko Luo (Full Stack Developer)
+            </a>
+          </li>
+          <li className={styles.member}>
+            <a
+              href="https://github.com/AmadiMichael"
+              target="_blank"
+              rel="noreferrer"
+            >
+              Michaels (Backend Developer) - [ Initial phase ]
             </a>
           </li>
         </ul>

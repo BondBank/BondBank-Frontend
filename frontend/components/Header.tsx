@@ -32,7 +32,7 @@ import styles from '../styles/Header.module.css';
 const navList = [
   { link: '/', text: 'Home' },
   { link: '/bondCreatorUI', text: 'Create Bond' },
-  { link: '/about', text: 'About' },
+  { link: '/About', text: 'About' },
 ];
 
 const Header = () => {

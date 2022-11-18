@@ -109,7 +109,7 @@ const BondCreatorUI: NextPage = () => {
           console.log('----');
           const t = await erc20.addADMINrole();
           console.log(t);
-
+          createNewBondPage();
         }
       } catch (e) {
         console.error('assign_AdminRole()--UnabletoConnectTowallet---');
