@@ -10,6 +10,13 @@ This project is Front end UI for chainlink22 hackathon Repostiory "BondBank-Back
     [Joel](https://github.com/JJtheAndroid)
     [levblanc](https://github.com/levblanc)
 
+### Design
+
+Create Bond / Assign admin role : Solidity contract using ERC1155 standard
+
+Aave:
+
+Liquidation: Chainlink Automation Keepup service is used to liquidate the contracts automatically when bonds reach maturity date.
 
 ## How to use
 
@@ -49,6 +56,7 @@ Step 5: Select Bond Redemption to collect funds. <<this is where CHAINLINK autom
 
         Take away:
         - Connect wallet in Home page
+        
 >>>> ![image](https://user-images.githubusercontent.com/97905727/202766281-7296cbd6-7c92-4b52-9413-0e30f44bf1de.png)
 
 
