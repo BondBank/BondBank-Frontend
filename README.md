@@ -14,7 +14,7 @@ This project is Front end UI for chainlink22 hackathon Repostiory "BondBank-Back
 
 Create Bond / Assign admin role : Solidity contract using ERC1155 standard
 
-Aave:
+Aave: Lending and Borrowing protocol that generate interest for token suppliers
 
 Liquidation: Chainlink Automation Keepup service is used to liquidate the contracts automatically when bonds reach maturity date.
 
